@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Anime Image -->
+    <ImageView
+        android:id="@+id/smallAnimeImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <!-- Anime Title -->
+    <TextView
+        android:id="@+id/smallAnimeTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="Anime Title"
+        android:textAppearance="?attr/textAppearanceHeadline6"
+        android:textColor="@android:color/black"
+        app:layout_constraintStart_toEndOf="@id/smallAnimeImage"
+        app:layout_constraintTop_toTopOf="@id/smallAnimeImage" />
+
+    <!-- Anime status -->
+    <TextView
+        android:id="@+id/smallAnimestatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Status"
+        android:padding="10dp"
+        app:layout_constraintStart_toEndOf="@+id/smallAnimeImage"
+        app:layout_constraintTop_toBottomOf="@+id/smallAnimeTitle" />
+
+    <!-- Anime Year -->
+    <TextView
+        android:id="@+id/smallAnimeyear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:padding="10dp"
+        android:text="Year"
+        app:layout_constraintStart_toEndOf="@+id/smallAnimeImage"
+        app:layout_constraintTop_toBottomOf="@+id/smallAnimestatus" />
+
+    <!-- Anime Season -->
+
+
+    <TextView
+        android:id="@+id/season"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="Season"
+        app:layout_constraintStart_toEndOf="@+id/smallAnimeImage"
+        app:layout_constraintTop_toBottomOf="@+id/smallAnimeyear" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        app:cardCornerRadius="25dp"
+        app:cardElevation="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/smallAnimeImage"
+        app:layout_constraintBottom_toBottomOf="parent"
+        >
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:id="@+id/smallAnimeDescription"
+                android:text="Description"
+                android:padding="10dp"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/smallAnimeDescription"
+                app:layout_constraintStart_toStartOf="parent"
+                android:id="@+id/anime_english"
+                android:text="anime in english"
+                android:padding="10dp"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/anime_english"
+                app:layout_constraintStart_toStartOf="@+id/anime_english"
+                app:layout_constraintEnd_toEndOf="@+id/anime_english"
+                android:id="@+id/result_english"
+                android:text="result"
+                android:padding="10dp"
+                />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
