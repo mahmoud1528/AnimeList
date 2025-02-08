@@ -39,7 +39,7 @@ class AnimeList : Fragment() {
         binding.rvAnimeList.layoutManager = LinearLayoutManager(requireContext())
 
         viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
-            viewModel.getAnimeDetail()
+            viewModel.getAnimeList()
             withContext(Dispatchers.Main) {
                 binding.rvAnimeList.adapter = AnimeListAdapter(viewModel.animeDetail)
             }
