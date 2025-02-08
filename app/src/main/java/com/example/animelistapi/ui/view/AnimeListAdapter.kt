@@ -32,7 +32,7 @@ class AnimeListAdapter(private val animeList: List<Media>):
         holder.binding.apply {
             tvAnimeTitle.text = anime.title.romaji
             tvAnimeEpisode.text = anime.episodes.toString() + " Episodes"
-            tvAnimeRate.text = ((anime.averageScore/100)*100).toString()
+            tvAnimeRate.text = anime.averageScore.toString() + " %" + " Average Score"
 
             Glide.with(ivAnimeImage.context)
                 .load(anime.coverImage.large)
