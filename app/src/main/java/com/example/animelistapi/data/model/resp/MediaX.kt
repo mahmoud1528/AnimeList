@@ -5,11 +5,11 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class Media(
+data class MediaX(
     @SerialName("averageScore")
     val averageScore: Int,
     @SerialName("coverImage")
-    val coverImage: CoverImage,
+    val coverImage: CoverImageX,
     @SerialName("description")
     val description: String,
     @SerialName("duration")
@@ -27,7 +27,7 @@ data class Media(
     @SerialName("popularity")
     val popularity: Int,
     @SerialName("rankings")
-    val rankings: List<Ranking>,
+    val rankings: List<RankingX>,
     @SerialName("season")
     val season: String,
     @SerialName("seasonYear")
@@ -35,5 +35,5 @@ data class Media(
     @SerialName("status")
     val status: String,
     @SerialName("title")
-    val title: Title
+    val title: TitleX
 )

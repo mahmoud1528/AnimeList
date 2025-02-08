@@ -8,6 +8,4 @@ import kotlinx.serialization.Serializable
 data class AnimeRequest(
     @SerialName("query")
     val query: String,
-    @SerialName("variables")
-    val variables: Variables
 )

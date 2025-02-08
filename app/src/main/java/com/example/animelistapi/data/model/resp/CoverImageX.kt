@@ -5,7 +5,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class CoverImage(
+data class CoverImageX(
     @SerialName("color")
     val color: String,
     @SerialName("large")

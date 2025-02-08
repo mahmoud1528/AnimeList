@@ -5,7 +5,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class Title(
+data class TitleX(
     @SerialName("english")
     val english: String,
     @SerialName("native")

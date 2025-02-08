@@ -5,7 +5,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class Ranking(
+data class RankingX(
     @SerialName("allTime")
     val allTime: Boolean,
     @SerialName("format")
