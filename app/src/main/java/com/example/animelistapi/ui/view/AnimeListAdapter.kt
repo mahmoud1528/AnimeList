@@ -24,15 +24,13 @@ class AnimeListAdapter(private val animeList: List<Media>):
 
     override fun getItemCount(): Int = animeList.size
 
-
-
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: AnimeListViewHolder, position: Int) {
         val anime = animeList[position]
         holder.binding.apply {
             tvAnimeTitle.text = anime.title.romaji
             tvAnimeEpisode.text = anime.episodes.toString() + " Episodes"
-            tvAnimeRate.text = anime.averageScore.toString() + " %" + " Average Score"
+            tvAnimeRate.text = anime.averageScore.toFloat().div(10).toString()
 
             Glide.with(ivAnimeImage.context)
                 .load(anime.coverImage.large)
