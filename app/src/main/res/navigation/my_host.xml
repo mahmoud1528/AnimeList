@@ -13,9 +13,15 @@
         <action
             android:id="@+id/action_animeList_to_animeDetails"
             app:destination="@id/animeDetails" />
+
     </fragment>
     <fragment
         android:id="@+id/animeDetails"
         android:name="com.example.animelistapi.ui.view.AnimeDetails"
-        android:label="AnimeDetails" />
+        android:label="AnimeDetails"
+        >
+        <argument
+            android:name="IdArgs"
+            app:argType="string" />
+    </fragment>
 </navigation>

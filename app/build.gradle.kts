@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     id("com.google.devtools.ksp") version "2.1.0-1.0.29"
     kotlin("plugin.serialization") version "2.1.0"
+    id("androidx.navigation.safeargs.kotlin") version "2.8.5"
 }
 
 android {

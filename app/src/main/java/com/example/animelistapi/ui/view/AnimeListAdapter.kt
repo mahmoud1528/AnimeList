@@ -8,7 +8,8 @@ import com.bumptech.glide.Glide
 import com.example.animelistapi.data.model.resp.Media
 import com.example.animelistapi.databinding.ListframeBinding
 
-class AnimeListAdapter(private val animeList: List<Media>):
+class AnimeListAdapter(private val animeList: List<Media>,
+    private val onAnimeClick:(Int) -> Unit):
     RecyclerView.Adapter<AnimeListAdapter.AnimeListViewHolder>() {
 
     class AnimeListViewHolder(val binding: ListframeBinding): RecyclerView.ViewHolder(binding.root)
@@ -28,6 +29,7 @@ class AnimeListAdapter(private val animeList: List<Media>):
     override fun onBindViewHolder(holder: AnimeListViewHolder, position: Int) {
         val anime = animeList[position]
         holder.binding.apply {
+
             tvAnimeTitle.text = anime.title.romaji
             tvAnimeEpisode.text = anime.episodes.toString() + " Episodes"
             tvAnimeRate.text = anime.averageScore.toFloat().div(10).toString()
@@ -35,6 +37,10 @@ class AnimeListAdapter(private val animeList: List<Media>):
             Glide.with(ivAnimeImage.context)
                 .load(anime.coverImage.large)
                 .into(ivAnimeImage)
+
+            root.setOnClickListener {
+                onAnimeClick(anime.id) // Pass anime ID
+            }
         }
     }
 }

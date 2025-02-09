@@ -1,7 +1,6 @@
 package com.example.animelistapi.data.api
 
 import com.example.animelistapi.data.model.req.AnimeRequest
-import com.example.animelistapi.data.model.req.Variables
 import com.example.animelistapi.data.model.resp.AnimeDetailsResponse
 import com.example.animelistapi.data.model.resp.AnimeResponse
 import retrofit2.Response
