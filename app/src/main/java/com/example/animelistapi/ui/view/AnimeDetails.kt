@@ -6,7 +6,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.Toolbar
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.bumptech.glide.Glide
 import com.example.animelistapi.ui.viewmodel.AnimeListViewModel
 import com.example.animelistapi.data.api.RetrofitList
@@ -16,6 +19,7 @@ import com.example.animelistapi.ui.viewmodel.AnimeDetailsViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import org.jsoup.Jsoup
 
 
 class AnimeDetails : Fragment() {
@@ -39,34 +43,32 @@ class AnimeDetails : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
         var args = AnimeDetailsArgs.fromBundle(requireArguments())
         val animeId = args.IdArgs.toInt()
 
-        viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
-            viewModel.getAnimeDetails(animeId)  // Fetch details using animeId
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.getAnimeDetails(animeId)
+        }
 
-            withContext(Dispatchers.Main) {
-                val anime = viewModel.animeDetail.find { it.id == animeId }
+        viewModel.animeDetail.observe(viewLifecycleOwner) { anime ->
+            anime?.let {
+                binding.apply {
+                    smallAnimeTitle.text = anime.title.romaji
+                    smallAnimestatus.text = anime.status
+                    smallAnimeyear.text = anime.seasonYear.toString()
+                    season.text = anime.season
+                    smallAnimeDescription.text = Jsoup.parse(anime.description).text()
+                    resultEnglish.text = anime.title.english ?: "No English Title"
+                    resultFormat.text = anime.format
 
-                if (anime != null) {
-                    binding.apply {
-                        smallAnimeTitle.text = anime.title.romaji
-                        smallAnimestatus.text = anime.status
-                        smallAnimeyear.text = anime.seasonYear.toString()
-                        season.text = anime.season
-                        smallAnimeDescription.text = anime.description
-                        resultEnglish.text = anime.title.english
-
-                        Glide.with(smallAnimeImage.context)
-                            .load(anime.coverImage.medium)
-                            .into(smallAnimeImage)
-                    }
-                } else {
-                    binding.smallAnimeTitle.text = "Anime not found!"
+                    Glide.with(smallAnimeImage.context)
+                        .load(anime.coverImage.medium)
+                        .into(smallAnimeImage)
                 }
             }
         }
-
     }
+
 
 }
